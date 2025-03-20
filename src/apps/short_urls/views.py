@@ -3,7 +3,6 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.mixins import CreateModelMixin
 
-
 from apps.short_urls.models import ShortUrl
 from apps.short_urls.serializers import ShortUrlSerializer
 
