@@ -1,0 +1,17 @@
+.idea/
+.DS_Store
+venv
+.environment/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# sqlite db
+db.sqlite3
+
+# static files
+static
+src/media/*
+!src/media/.gitkeep
