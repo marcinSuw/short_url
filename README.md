@@ -20,8 +20,9 @@ Projekt bazuje na `poetry` (https://github.com/python-poetry/poetry),
 
 Instalacja pakietów:
 1. `poetry install --no-root` - Run in current folder create virtualenv and installs packages from `pyproject.toml`
+2`poetry shell` - Uruchamia powłokę shell z wirtualnym środowiskiem
 
-# Running the project
+# Uruchomienie projektu
 
 Uruchomienie lokale:
 * `python manage.py migrate`
@@ -50,8 +51,16 @@ Example get short url:
 curl --location 'localhost:8000/YKY5ImU7/'
 ```
 
-Z uwagi na to, że zagadnienie dotyczy zadania, które można rozwiązać na kilka sposobów, zdecydowałem się na najprostsze podejście, wykorzystując gotowe elementy Django REST Framework. Dodatkowo dodałem podstawową walidację oraz zabezpieczenia przed możliwymi do wystąpienia błędami.
 
-Z uwagi na wbudowaną walidację serializerów oraz gotowe mixin-y do tworzenia wpisów w bazie, zdecydowałem się na użycie mixina `CreateModelMixin`. W przypadku przekierowania na krótki URL zdecydowałem się na użycie dekoratora `api_view`, ponieważ mamy do czynienia z sytuacją, w której chcemy pobrać element inaczej niż po ID. W takim przypadku gotowe widoki wymagają więcej zmian.
+Z uwagi na to, jakiego zagadnienia dotyczy zadanie, rozwiązać je można na kilka sposobów.
 
-W związku z możliwym wystąpieniem kolizji podczas tworzenia obiektu, zdecydowałem się na kilkukrotne generowanie skrótów z ograniczoną liczbą powtórzeń, aby nie zablokować aplikacji. Istnieją różne podejścia do rozwiązania problemu kolizji w przypadku generowania skrótów. Na dalszym etapie można rozważyć usuwanie przestarzałych wpisów w celu zwolnienia zajętych już skrótów.
+Zgodnie z wytycznymi zrobiłem zadanie jak najprościej, wykorzystując gotowe elementy DRF. Dodałem również podstawową walidację i zabezpieczenie przed możliwymi do wystąpienia błędami.
+
+Z uwagi na wbudowaną walidację serializerów oraz gotowe mixiny do tworzenia wpisów w bazie, zdecydowałem się na użycie mixina CreateModelMixin.
+
+W przypadku przekierowania na krótki URL, zdecydowałem się na użycie decoratora api_view, gdyż mamy do czynienia z sytuacją, gdy chcemy pobierać element inaczej niż po id. Wtedy gotowe widoki wymagają więcej zmian.
+
+W związku z możliwym wystąpieniem kolizji w czasie tworzenia obiektu, zdecydowałem się na kilkukrotne generowanie skrótów z skończoną liczbą powtórzeń, aby nie zablokować aplikacji.
+Są możliwe różne podejścia do rozwiązania problemu kolizji w przypadku generowania skrótów.
+
+Na dalszym etapie można rozważyć usuwanie przestarzałych wpisów w celu zwolnienia zajętych już skrótów.
